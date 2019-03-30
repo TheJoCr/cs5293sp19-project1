@@ -11,8 +11,9 @@ concepts.
 
 To run the program, execute:
 ```bash
-main.py [-h] --input INPUT [--output OUTPUT] [--stats STATS] [--names]
-        [--genders] [--dates] [--addresses] [--phones] [--concept CONCEPT]
+pipenv run python -m project1.main [-h] --input INPUT [--output OUTPUT]
+    [--stats STATS] [--names] [--genders] [--dates] [--addresses] [--phones]
+    [--concept CONCEPT]
 ```
 INPUT is specified as a glob of files, and the `--input` flag can be specified
 multiple times to supply multiple globs. 

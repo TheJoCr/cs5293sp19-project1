@@ -62,7 +62,11 @@ def obfuscate_file(args, f, output_dir):
     return stats
 
 def print_stats(args, stats):
-    keys = ['names', 'genders', 'dates', 'addresses', 'phones']
+    potential_keys = ['names', 'genders', 'dates', 'addresses', 'phones']
+    keys = []
+    for key in potential_keys:
+        if getattr(args, key):
+            keys.append(key)
     keys += args.concept
     total = {}
     for k in keys:
@@ -105,7 +109,7 @@ parser.add_argument('--dates', action='store_true')
 parser.add_argument('--addresses', action='store_true')
 parser.add_argument('--phones', action='store_true')
 # 'Concepts' to redact
-parser.add_argument('--concept', action='append')
+parser.add_argument('--concept', action='append', default=[])
 
 def main():
     """
@@ -115,4 +119,7 @@ def main():
     # parse args
     args = parser.parse_args()
     execute(args)
+
+if __name__ == "__main__":
+    main()
 
